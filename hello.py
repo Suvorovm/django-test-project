@@ -1,6 +1,3 @@
-def printer(firstArg,SeconArg):
-    print("xer")
-
 def serverApp (environ,start_response):
     dataFromUser = environ['QUERY_STRING'] 
     resultList = dataFromUser.strip().replace("?","").replace("/","").replace("&"," ").split(" ")
@@ -8,10 +5,3 @@ def serverApp (environ,start_response):
         resultList[i] =(resultList[i] + '\n').encode("utf-8")
     start_response("200 OK", [("Content-Type", "text/plain")])
     return resultList
-
-
-myDict = {'QUERY_STRING':"/?a=1&a=2&b=3"}
-
-resultString =  serverApp(myDict,printer)
-for i in resultString:
-    print(i)
